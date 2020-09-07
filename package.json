@@ -1,0 +1,23 @@
+{
+  "name": "ai-people-test",
+  "version": "0.0.0",
+  "description": "Express.js | bull | Redis | Google email",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "run": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/innistry/ai-people-test.git"
+  },
+  "author": "innistry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/innistry/ai-people-test/issues"
+  },
+  "homepage": "https://github.com/innistry/ai-people-test#readme"
+}
