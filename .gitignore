@@ -70,3 +70,7 @@ storage/*
 
 # Profile clinic
 .clinic
+
+# Google gmail credentials
+credentials.json
+token.json

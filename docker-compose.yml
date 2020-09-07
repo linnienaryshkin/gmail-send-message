@@ -1,0 +1,12 @@
+version: '3.2'
+
+services:
+    redis:
+        image: redis:4.0.11
+        command: ['redis-server', '--appendonly', 'yes']
+        ports:
+            - 6379:6379
+        restart: unless-stopped
+# networks:
+#   net:
+#     driver: bridge
