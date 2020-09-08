@@ -8,6 +8,28 @@ exports.JobAbstract = class JobAbstract {
         return 'default';
     }
 
+    async handler(job) {
+        console.info(`Undefined ${this.queueName} job handler with data: ${job.data}`);
+        return job.data;
+    }
+
+    register() {
+        this.instance.process(this.handler.bind(this));
+    }
+
+    add(data, { delay = null, important = false } = {}) {
+        const options = {};
+
+        if (delay !== null) {
+            options.delay = delay;
+        }
+        if (important === true) {
+            options.lifo = important;
+        }
+
+        return this.instance.add(data, options);
+    }
+
     get instance() {
         if (!this.#bullInstance) {
             this.#bullInstance = new Bull(this.queueName, {
@@ -45,27 +67,5 @@ exports.JobAbstract = class JobAbstract {
         }
 
         return this.#bullInstance;
-    }
-
-    add(data, { delay = null, important = false } = {}) {
-        const options = {};
-
-        if (delay !== null) {
-            options.delay = delay;
-        }
-        if (important === true) {
-            options.lifo = important;
-        }
-
-        return this.instance.add(data, options);
-    }
-
-    register() {
-        this.instance.process(this.handler.bind(this));
-    }
-
-    async handler(job) {
-        console.info(`Undefined ${this.queueName} job handler with data: ${job.data}`);
-        return job.data;
     }
 };

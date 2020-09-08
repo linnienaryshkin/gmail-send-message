@@ -19,6 +19,9 @@ class ConfigService {
         return process.env.REDIS_PORT;
     }
 
+    // The file token.json stores the user's access and refresh tokens, and is
+    // created automatically when the authorization flow completes for the first
+    // time.
     get googleTokenPath() {
         return process.env.GOOGLE_TOKEN_PATH;
     }
