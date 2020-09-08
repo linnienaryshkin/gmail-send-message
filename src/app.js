@@ -1,6 +1,8 @@
 const express = require('express');
+const { configService } = require('./config/config.service');
+const { sendEmailJob } = require('./jobs/send-email.job');
+
 const app = express();
-const port = 3000;
 
 /**
  * Here should be POST of course - I stay it so just for more simple test via browser
@@ -11,16 +13,11 @@ app.get('/send-mail', ({ query: { to, from, subject, message } }, res) => {
     res.send('Hello World! title = ' + title);
 });
 
-app.listen(port, () => {
-    console.log(`Run command on http://localhost:${port}/send-mail`);
+app.listen(configService.port, () => {
+    console.log(`Run command on http://localhost:${configService.port}/send-mail`);
 });
 
-/**
- * Client ID
- * 737560249989-5drhspr9p5n348i14678kkltmhe36f0g.apps.googleusercontent.com
- *
- * Client Secret
- * cZflDNrh9JuEr6VcpSJst1gN
- */
+sendEmailJob.register();
+sendEmailJob.add(123);
 
-require('./google-api');
+// import './google-api';
